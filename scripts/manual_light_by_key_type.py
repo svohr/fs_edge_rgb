@@ -26,24 +26,34 @@ enter = ['[ENT]']
 
 hot_keys = [f'[HK{hk}]' for hk in range(0, 11)]
 
+left = (
+    [f'[{char}]' for char in 'qwertasdfghzxcvb']
+    + [f'[{char}]' for char in '123456']
+    + f_group1
+    + f_group2[:2]
+    + ['[TILDE]', '[LSPC]', '[TAB]', '[ESC]',
+       '[CAPS]', '[LSHFT]', '[LCTRL]', '[LALT]', '[LWIN]']
+    + hot_keys
+)
 
-for key in alphas:
-    print(f'{key}>[255][255][153]')
+right = (
+    [f'[{char}]' for char in 'yuiophjklnm']
+    + [f'[{char}]' for char in '7890']
+    + f_group2[2:]
+    + f_group3
+    + arrows
+    + nav
+    ['[HYPH]', '[=]', '[OBRK]', '[CBRK]', '[\]',
+     '[COLON]', '[APOS]', '[COM]', '[PER]', '[/]',
+     '[RSPC]', '[RSHFT]', '[RCTRL]', '[RALT]', '[ENT]', '[BSPC]']
+)
 
-for key in nums + punctuation + space:
-    print(f'{key}>[255][153][51]')
 
-for key in modifiers:
-    print(f'{key}>[221][102][68]')
+for key in alphas + nums + punctuation:
+    print(f'{key}>[255][166][77]')
 
-for key in arrows:
-    print(f'{key}>[85][153][255]')
+for key in modifiers + space + nav:
+    print(f'{key}>[99][99][255]')
 
-for key in nav + f_group2 + esc:
-    print(f'{key}>[51][102][255]')
-
-for key in f_group1 + f_group3:
-    print(f'{key}>[0][17][238]')
-
-for key in hot_keys:
-    print(f'{key}>[187][68][17]')
+for key in esc + f_group1 + f_group2 + f_group3 + hot_keys + arrows:
+    print(f'{key}>[255][99][0]')
