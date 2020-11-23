@@ -43,17 +43,34 @@ right = (
     + f_group3
     + arrows
     + nav
-    ['[HYPH]', '[=]', '[OBRK]', '[CBRK]', '[\]',
-     '[COLON]', '[APOS]', '[COM]', '[PER]', '[/]',
-     '[RSPC]', '[RSHFT]', '[RCTRL]', '[RALT]', '[ENT]', '[BSPC]']
+    + ['[HYPH]', '[=]', '[OBRK]', '[CBRK]', '[\]',
+       '[COLON]', '[APOS]', '[COM]', '[PER]', '[/]',
+       '[RSPC]', '[RSHFT]', '[RCTRL]', '[RALT]', '[ENT]', '[BSPC]']
 )
 
+def print_switch_scheme():
+    switch_blue = '[0][195][227]'
+    switch_red = '[255][10][10]'
 
-for key in alphas + nums + punctuation:
-    print(f'{key}>[255][166][77]')
+    for key in left:
+        print(f'{key}>{switch_blue}')
 
-for key in modifiers + space + nav:
-    print(f'{key}>[99][99][255]')
+    for key in right:
+        print(f'{key}>{switch_red}')
 
-for key in esc + f_group1 + f_group2 + f_group3 + hot_keys + arrows:
-    print(f'{key}>[255][99][0]')
+    for key in left:
+        print(f'fn {key}>{switch_blue}')
+
+    for key in right:
+        print(f'fn {key}>{switch_red}')
+
+
+def print_lcards_scheme():
+    for key in alphas + nums + punctuation:
+        print(f'{key}>[255][166][77]')
+
+    for key in modifiers + space + nav:
+        print(f'{key}>[99][99][255]')
+
+    for key in esc + f_group1 + f_group2 + f_group3 + hot_keys + arrows:
+        print(f'{key}>[255][99][0]')
